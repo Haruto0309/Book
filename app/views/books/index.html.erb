@@ -1,6 +1,16 @@
 <div class="container px-5 px-sm-0">
+  <div class="error_explanation">
+    <% if @book.errors.any? %>
+      <h3><%= pluralize(@book.errors.count, "error") %>prohibited this obj from being saved:</h3>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
     <div class="row">
-        <%= render "users/userinfo.html.erb", user: @user, book: @new_book %>
+        <%= render "users/userinfo.html.erb", user: @user, book: @book %>
 
         <div class="col-md-8 offset-md-1">
             <h2>Books</h2>
